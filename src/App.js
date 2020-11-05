@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import FormName from "./components/FormName/FormName";
+import {connect} from "react-redux";
+import Quiz from "./containers/quiz/Quiz";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = ({currentUser}) => {
+    return (
+        <div className="App">
+            <div className='container'>
+                {
+                    currentUser ? <Quiz /> : <FormName />
+                }
+            </div>
+        </div>
+    );
 }
 
-export default App;
+const mapStateToProps = state => {
+    return{
+        currentUser: state.currentUser.currentUser
+    }
+}
+
+export default connect(mapStateToProps, null)(App)
