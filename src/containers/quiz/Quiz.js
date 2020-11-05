@@ -61,7 +61,7 @@ const Quiz = () => {
             an1: 'Самарканд',
             an2: 'Бухара',
             an3: 'Ташкент',
-            rightAnswer: 'Google chrome'
+            rightAnswer: 'Ташкент'
         }
     ]
 
@@ -78,10 +78,9 @@ const Quiz = () => {
 
     const handleEnd = () => {
         const currentUser = JSON.parse(localStorage.getItem('user'))
-        if (currentUser.length === 1){
+        if (currentUser.length === 1) {
             currentUser[0].points = localPoints
-        }
-        else{
+        } else {
             currentUser[currentUser.length - 1].points = localPoints
         }
         localStorage.setItem('user', JSON.stringify(currentUser))
@@ -132,7 +131,7 @@ const Quiz = () => {
                                     return 0;
                                 })
                                     .map(user => {
-                                        if (user.points !== 0){
+                                        if (user.points !== 0) {
                                             return (
                                                 <div className='item'>
                                                     <span>{user.name}</span>
